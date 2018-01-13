@@ -8,6 +8,6 @@ public class JumpAction : PolyJumperAction
 	[ClientRpc]
 	public override void RpcDoAction()
 	{
-		GetComponent<Rigidbody>().AddForce(JumpVector, ForceMode.Impulse);
+		GetComponent<Rigidbody>().AddRelativeForce(JumpVector, ForceMode.Impulse);
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -28,7 +29,15 @@ public class PlayerAction : NetworkBehaviour
 			var action = ActionKeyValuePair[i];
 			if (Input.GetKeyDown(action.KeyCode))
 			{
-				DoAction(i);
+				if (action.Action.Restrictions.All(r => r.CanExecuteAction()))
+				{
+					DoAction(i);
+					action.Action.Restrictions.Select(r =>
+					{
+						r.ActionWasExecuted();
+						return false;
+					}).Count();
+				}
 			}
 		}
 	}
