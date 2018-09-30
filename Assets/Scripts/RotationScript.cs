@@ -14,6 +14,6 @@ public class RotationScript : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!isLocalPlayer) return;
-		transform.Rotate(0, Input.GetAxis("Mouse X") * LookRotationFactor.x, Input.GetAxis("Mouse Y") * LookRotationFactor.y);
+		transform.Rotate(0, Input.GetAxis("Mouse X") * LookRotationFactor.x, Input.GetAxis("Mouse Y") * LookRotationFactor.y, Space.World);
 	}
 }

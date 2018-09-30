@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyJumper", "PolyJumper.csproj", "{67C9C122-67BE-E0B5-66F9-FD2BCB6BD861}"
 EndProject
 Global

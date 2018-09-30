@@ -23,11 +23,12 @@ public class HookAction : PolyJumperAction
 	{
 		if (hookGameObject == null)
 		{
-			hookGameObject = (GameObject)Instantiate(hookPrefab, transform.position + transform.right, transform.rotation);
+			hookGameObject = (GameObject)Instantiate(hookPrefab, transform.position + transform.forward, Quaternion.Euler(transform.forward));
 			var locVel = transform.InverseTransformDirection(hookGameObject.GetComponent<Rigidbody>().velocity);
-			locVel.x = VelocityVector.x;
+			locVel.z = VelocityVector.z;
 			locVel.y = VelocityVector.y;
 			hookGameObject.GetComponent<Rigidbody>().velocity = transform.TransformDirection(locVel);
+			hookGameObject.GetComponent<HookBehaviour>().target = transform.gameObject;
 			NetworkServer.Spawn(hookGameObject);
 			Destroy(hookGameObject, 2.0f);
 		}

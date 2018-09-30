@@ -15,8 +15,8 @@ public class WalkingScript : NetworkBehaviour
 	// Update is called once per frame
 	void Update () {
 		if (!isLocalPlayer) return;
-		var x = Input.GetAxis("Vertical") * Time.deltaTime * MovementSpeed.x;
-		var z = Input.GetAxis("Horizontal") * Time.deltaTime * MovementSpeed.z;
-		transform.Translate(x, 0, -z);
+		var x = Input.GetAxis("Horizontal") * Time.deltaTime * MovementSpeed.x;
+		var z = Input.GetAxis("Vertical") * Time.deltaTime * MovementSpeed.z;
+		transform.Translate(x, 0, z);
 	}
 }
