@@ -79,10 +79,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Actions\ChanneledAction.cs" />
     <Compile Include="Assets\Scripts\Actions\CooldownActionRestrictionScript.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\HookAction.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\HookBehaviour.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\TeleportingHook.cs" />
+    <Compile Include="Assets\Scripts\Actions\JetpackAction.cs" />
     <Compile Include="Assets\Scripts\Actions\JumpAction.cs" />
     <Compile Include="Assets\Scripts\Actions\LogAction.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction.cs" />
