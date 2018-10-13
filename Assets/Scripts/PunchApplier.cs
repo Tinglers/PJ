@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportingHook : HookBehaviour {
-	
+public class PunchApplier : MonoBehaviour {
 
+	public Transform owner;
+	public Vector2 force;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,7 +18,8 @@ public class TeleportingHook : HookBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log(transform.position);
-		target.transform.position = transform.position + new Vector3(0, 2, 0);
+		var direction = owner.transform.forward * force.x;
+		direction.y = force.y;
+		other.transform.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
 	}
 }

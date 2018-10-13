@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Actions\SequencedAction.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowScript.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraPositioningBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PunchApplier.cs" />
     <Compile Include="Assets\Scripts\RotationScript.cs" />
     <Compile Include="Assets\Scripts\WalkingScript.cs" />
   </ItemGroup>
