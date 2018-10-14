@@ -81,6 +81,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Actions\ChanneledAction.cs" />
     <Compile Include="Assets\Scripts\Actions\CooldownActionRestrictionScript.cs" />
+    <Compile Include="Assets\Scripts\Actions\GroundedRestriction.cs" />
+    <Compile Include="Assets\Scripts\Actions\GroundedSequenceResetter.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\HookAction.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\HookBehaviour.cs" />
     <Compile Include="Assets\Scripts\Actions\Hook\TeleportingHook.cs" />
