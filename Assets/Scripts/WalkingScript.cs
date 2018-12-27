@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class WalkingScript : NetworkBehaviour
+public class WalkingScript : MonoBehaviour
 {
 
 
@@ -14,7 +14,7 @@ public class WalkingScript : NetworkBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isLocalPlayer) return;
+		//if (!isLocalPlayer) return;
 		var x = Input.GetAxis("Horizontal") * Time.deltaTime * MovementSpeed.x;
 		var z = Input.GetAxis("Vertical") * Time.deltaTime * MovementSpeed.z;
 		transform.Translate(x, 0, z);

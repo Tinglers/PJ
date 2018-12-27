@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public abstract class PolyJumperAction : NetworkBehaviour
+public abstract class PolyJumperAction : MonoBehaviour
 {
 	public List<ActionRestriction> Restrictions;
-
 	public abstract void RpcDoAction();
+
+	public bool TryDoAction()
+	{
+		if (Restrictions.All(r => r.CanExecuteAction()))
+		{
+			RpcDoAction();
+			Restrictions.ForEach(r => r.ActionWasExecuted());
+			return true;
+		}
+		return false;
+	}
 }
 
 [Serializable]

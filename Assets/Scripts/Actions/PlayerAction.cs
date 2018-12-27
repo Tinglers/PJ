@@ -29,31 +29,8 @@ public class PlayerAction : NetworkBehaviour
 			var action = ActionKeyValuePair[i];
 			if (Input.GetKeyDown(action.KeyCode))
 			{
-				if (action.Action.Restrictions.All(r => r.CanExecuteAction()))
-				{
-					DoAction(i);
-					action.Action.Restrictions.Select(r =>
-					{
-						r.ActionWasExecuted();
-						return false;
-					}).Count();
-				}
+				ActionKeyValuePair[i].Action.TryDoAction();
 			}
 		}
-	}
-
-	public void DoAction(int action)
-	{
-		ActionKeyValuePair[action].Action.RpcDoAction();
-		if (Network.isClient)
-		{
-			CmdDoAction(action);
-		}
-	}
-
-	[Command]
-	public void CmdDoAction(int action)
-	{
-		ActionKeyValuePair[action].Action.RpcDoAction();
 	}
 }
