@@ -17,14 +17,9 @@ public class ChanneledAction : PolyJumperAction
 	
 	// Update is called once per frame
 	void Update () {
-		if (channeling && Restrictions.All(x => x.CanExecuteAction()))
+		if (channeling)
 		{
-			actionToChannel.RpcDoAction();
-			Restrictions.Select(r =>
-			{
-				r.ActionWasExecuted();
-				return false;
-			}).Count();
+			actionToChannel.TryDoAction();
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GroundedRestriction : ActionRestriction
+public class LockedRestriction : ActionRestriction
 {
 	public override void ActionWasExecuted()
 	{
@@ -9,6 +9,7 @@ public class GroundedRestriction : ActionRestriction
 
 	public override bool CanExecuteAction()
 	{
-		return Physics.Raycast(transform.position, -Vector3.up, 1.03f);
+		//Debug.Log("was locked");
+		return false;
 	}
 }
