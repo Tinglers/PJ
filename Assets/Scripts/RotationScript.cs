@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class RotationScript : NetworkBehaviour {
+public class RotationScript : MonoBehaviour {
 
-	public Vector3 LookRotationFactor;
+	public Vector2 LookRotationFactor;
+	public Vector2 ClampX;
+	public Vector2 ClampY;
+	public Space space = Space.World;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,7 +15,7 @@ public class RotationScript : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isLocalPlayer) return;
-		transform.Rotate(0, Input.GetAxis("Mouse X") * LookRotationFactor.x, Input.GetAxis("Mouse Y") * LookRotationFactor.y, Space.World);
+		//if (!isLocalPlayer) return;
+		transform.Rotate(Input.GetAxis("Mouse Y") * LookRotationFactor.y, Input.GetAxis("Mouse X") * LookRotationFactor.x, 0, space);
 	}
 }

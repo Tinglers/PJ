@@ -1,43 +1,45 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LockedRestriction))]
 public class KickAction : PolyJumperAction
 {
 	public Vector3 byAngles;
 	public float inTime;
 	private Quaternion fromAngle;
 	private LockedRestriction restriction;
+	private PunchApplier puncher;
 
 
 	public void Start()
 	{
-		fromAngle = transform.rotation;
 		restriction = transform.GetComponent<LockedRestriction>();
+		puncher = transform.GetComponentInChildren<PunchApplier>();
 	}
 
 	public override void RpcDoAction()
 	{
 		Restrictions.Add(restriction);
-		transform.GetComponentInChildren<PunchApplier>().enabled = true;
+		puncher.enabled = true;
 		StartCoroutine(RotateMe());
 	}
 
 	IEnumerator RotateMe()
 	{
-		var toAngle = Quaternion.Euler(transform.eulerAngles + byAngles);
+		fromAngle = transform.localRotation;
+		var toAngle = Quaternion.Euler(transform.localEulerAngles + byAngles);
 		for (var t = 0f ; t < 1; t += Time.deltaTime / inTime)
 		{
-			transform.rotation = Quaternion.Slerp(fromAngle, toAngle, t);
+			transform.localRotation = Quaternion.Slerp(fromAngle, toAngle, t);
 			yield return null;
 		}
-		finishUp();
+		FinishUp();
 	}
 
-	private void finishUp()
+	private void FinishUp()
 	{
-		transform.GetComponentInChildren<PunchApplier>().enabled = false;
-		transform.rotation = fromAngle;
+		puncher.enabled = false;
+		transform.localRotation = fromAngle;
 		Restrictions.Remove(restriction);
 	}
 }
